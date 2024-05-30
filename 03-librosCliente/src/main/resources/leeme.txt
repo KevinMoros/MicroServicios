@@ -1,0 +1,12 @@
+1.- Crear el proyecto y poner las dependencias necesarias(Starter Spring Web).
+2.- Definir el modelo.
+3.- Trabajar con la capa de servicio.
+	3.1 Crear la interfaz
+	3.2 Crear la clase que implemente la interfaz.
+4.- Implementar el controlodar.
+5.- Configuraciones 
+	5.1 Indicar los paquetes a escanear
+	5.2 Crear el @Bean del RestTemplate.
+	5.3 Asignar un número de puerto válido y que esté libre en server.port= 9090;
+6.- Probar en Postman;
+	En mi caso http://localhost:9090/ejemplar/345/titulo345/tematica345
