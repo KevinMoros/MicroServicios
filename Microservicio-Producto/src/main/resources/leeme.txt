@@ -1,0 +1,33 @@
+Recurso: Producto.
+
+Vamos a exponer peticiones Get y Put de Producto que está almacenado en una base de datos:
+
+GET		--> Recuperar Producto.
+PUT  	--> Actualizar stock Producto.
+GET		--> Recuperar precio unitario del Producto.
+
+http://localhost:8000/productos														GET: Recupera todos los productos existentes.
+http://localhost:8000/productos?cod_producto=cod_producto&ud_compradas=ud_compradas	PUT: Actualizar el stock de un producto indicando su codigo en la url y las unidades que han sido compradas.
+http://localhost:8000/productos/precioUnitario/{cod_producto}						GET: Recuperar el precio unitario del producto que se ha pasado con el codigo.
+
+ORGANIGRAMA DE LA CREACIÓN DEL PROYECTO:
+
+1- Crear el proyecto e insertar las dependencias necesarias.
+2- Definir el modelo de datos. (com.curso.model).
+3- Crear la capa DAO (com.curso.dao).
+	Crear interface que extends de JpaRepository<T, ID>.
+	Donde T hace referencia la tipo de la entidad e ID hace referencia al tipo de la PK.
+	Si se necesitan más métodos que los que están en JpaRepository se incorporan en:
+		@Query("  ")
+		tipoDevuelve metodo(tipoArg arg).
+4- Capa de la lógica de negocio.(Capa de servicio). (com.curso.service).
+ 4.1 Crear la interface.
+ 4.2 Crear la clase que implemente esa interface.(No olvidar incluir @Service)y usar y declarar una variable de tipo Dao y anotarla
+ 	 con @Autowired.
+5- Implementar el controlador(com.curso.controller). (No olvidar @RestController en la clase y @Autowired 'ProductosService service').
+6- Configuraciones (com.curso.inicio)
+	6.1 En la clase lanzadora añadir los paquetes que tienen clases con anotaciones de spring.
+	@EntityScan(basePackages = "com.curso.model") --> Paquete dónde está la entidad.
+	@EnableJpaRepositories(basePackages = "com.curso.dao") --> Paquete dónde habilitamos la interface de Jpa.
+	@SpringBootApplication(scanBasePackages = {"com.curso.controller","com.curso.service"})
+	6.2 En el application.properties incorporar las propiedades necesarias para poder trabajar con la base de datos.
