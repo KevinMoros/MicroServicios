@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.curso.model.Libro;
 import com.curso.service.LibrosService;
+@CrossOrigin("*")		// Tiene que ver con la política de CORS que implementan los navegadores
+						// Cross-origin resource sharing
 @RestController
 public class LibrosController {
 	

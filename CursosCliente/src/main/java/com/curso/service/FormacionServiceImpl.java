@@ -17,11 +17,11 @@ public class FormacionServiceImpl implements FormacionService {
 	@Autowired
 	RestTemplate template;
 
-	private String url = "http://localhost:8080/";
+	private final String URL = "http://localhost:8080/";
 
 	@Override
 	public List<Formacion> cursosExistentes() {
-		List<Curso> cursos = Arrays.asList(template.getForObject(url + "cursos/lista", Curso[].class));
+		List<Curso> cursos = Arrays.asList(template.getForObject(URL + "cursos/lista", Curso[].class));
 		List<Formacion> formaciones = new ArrayList<>();
 
 		for (Curso curso : cursos) {
@@ -42,7 +42,7 @@ public class FormacionServiceImpl implements FormacionService {
 
 	@Override
 	public void nuevoCurso(Formacion formacion) {
-		List<Curso> cursos = Arrays.asList(template.getForObject(url + "cursos/lista", Curso[].class));
+		List<Curso> cursos = Arrays.asList(template.getForObject(URL + "cursos/lista", Curso[].class));
 		
 		boolean existe = false;
 
@@ -58,7 +58,7 @@ public class FormacionServiceImpl implements FormacionService {
 		}
 		
 		if(!existe) {
-			template.postForLocation(url+"cursos", cursoInsertar);
+			template.postForLocation(URL+"cursos", cursoInsertar);
 		}
 	}
 }

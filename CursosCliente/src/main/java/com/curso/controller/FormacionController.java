@@ -19,7 +19,7 @@ public class FormacionController {
 	FormacionService service;
 
 	@GetMapping(value = "formacion", produces = MediaType.APPLICATION_JSON_VALUE)
-	List<Formacion> cursosExistentes(){
+	public List<Formacion> cursosExistentes(){
 		return service.cursosExistentes();
 	}
 

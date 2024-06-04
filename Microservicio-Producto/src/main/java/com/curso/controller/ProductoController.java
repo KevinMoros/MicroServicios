@@ -20,17 +20,17 @@ public class ProductoController {
 	ProductosService service;
 	
 	@GetMapping(value="productos", produces = MediaType.APPLICATION_JSON_VALUE)
-	List<Producto> listaProductos(){
+	public List<Producto> listaProductos(){
 		return service.listaProductos();
 	}
 	
 	@PutMapping(value="productos/{cod_producto}/{ud_compradas}")
-	void actualizarStock (@PathVariable int cod_producto,@PathVariable int ud_compradas) {
+	public void actualizarStock (@PathVariable int cod_producto,@PathVariable int ud_compradas) {
 		service.actualizarStock(cod_producto, ud_compradas);
 	}
 	
 	@GetMapping(value = "productos/precioUnitario/{cod_producto}", produces = MediaType.APPLICATION_JSON_VALUE)
-	double precioUnitario (@PathVariable int cod_producto) {
+	public double precioUnitario (@PathVariable int cod_producto) {
 		return service.precioUnitario(cod_producto);
 	}
 }

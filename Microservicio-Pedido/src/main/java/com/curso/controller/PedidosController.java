@@ -19,12 +19,12 @@ public class PedidosController {
 	PedidosService service;
 	
 	@PostMapping(value = "pedidos", consumes = MediaType.APPLICATION_JSON_VALUE)
-	void altaPedido(@RequestBody Pedido pedido) {
+	public void altaPedido(@RequestBody Pedido pedido) {
 		service.insertarPedido(pedido);
 	}
 	
 	@GetMapping(value = "pedidos", produces = MediaType.APPLICATION_JSON_VALUE)
-	List<Pedido> pedidosRegistrados(){
+	public List<Pedido> pedidosRegistrados(){
 		return service.listaPedidos();
 	}
 
